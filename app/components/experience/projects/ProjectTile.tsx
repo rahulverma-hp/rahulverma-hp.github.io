@@ -56,8 +56,8 @@ const ProjectTile = ({ project, index, position, rotation, activeId, onClick }: 
         y: hovered ? 1.3 : 1,
         z: hovered ? 1.3 : 1,
       }, 0)
-      .to(title.position, { y: hovered ? 0.7 : -0.8 }, 0)
-      .to(textBox.position, { y: hovered ? 0.7 : 0 }, 0)
+      .to(title.position, { y: hovered ? 1.22 : 1.12 }, 0)
+      .to(textBox.position, { y: hovered ? 0.52 : 0.42 }, 0)
       // .to(textBox.scale, { y: hovered ? 1 : 0, x: hovered ? 1 : 0 }, 0)
       .to(textBox, { fillOpacity: hovered ? 1 : 0, duration: 0.4 }, 0)
       .to(mesh.scale, { y: hovered ? 2 : 1 }, 0)
@@ -104,31 +104,37 @@ const ProjectTile = ({ project, index, position, rotation, activeId, onClick }: 
       onPointerOut={() => !isMobile && isProjectSectionActive && setHovered(false)}>
       <group ref={projectRef}>
         <mesh>
-          <planeGeometry args={[4.2, 2, 1]} />
+          <planeGeometry args={[5.2, 2.6, 1]} />
           <meshBasicMaterial color="#FFF" transparent opacity={0.3}/>
           {/* <meshPhysicalMaterial transmission={1} roughness={0.3} /> */}
           <Edges color="black" lineWidth={1.5} />
         </mesh>
         <Text
           {...titleProps}
-          position={[-1.9, -0.8, 0.101]}
+          position={[-2.35, 1.12, 0.101]}
           anchorX="left"
-          anchorY="bottom"
-          maxWidth={4}
-          fontSize={0.8}>
+          anchorY="top"
+          maxWidth={4.9}
+          fontSize={0.5}
+          lineHeight={1.1}
+          overflowWrap="break-word">
           {project.title}
         </Text>
         <Text
           {...subtitleProps}
-          maxWidth={3.8}
-          position={[-1.9, 2.3, 0.1]}
+          maxWidth={4.9}
+          position={[-2.35, 0.42, 0.1]}
           // scale={[0, 0, 1]}
-          fontSize={0.2}>
+          fontSize={0.17}
+          lineHeight={1.35}
+          textAlign="left"
+          overflowWrap="break-word"
+          fillOpacity={0}>
           {project.subtext}
         </Text>
         {links.length > 0 && (
           <group
-            position={[1.3, -0.6, -1]}
+            position={[1.5, -0.8, -1]}
             scale={[0, 0, 1]}
             onPointerOver={() => (document.body.style.cursor = "pointer")}
             onPointerOut={() => (document.body.style.cursor = "auto")}>

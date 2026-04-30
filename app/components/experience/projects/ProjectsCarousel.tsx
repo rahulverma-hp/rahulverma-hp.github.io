@@ -19,21 +19,16 @@ const ProjectsCarousel = () => {
   };
 
   const tiles = useMemo(() => {
-    const fov = Math.PI;
-    const distance = 13;
     const count = PROJECTS.length;
 
     return PROJECTS.map((project, i) => {
-      // With a single project, angle 0 would sit at x=-13 (off to the side). Use π/2 so the tile sits centered in front of the camera.
-      const angle =
-        count === 1 ? Math.PI / 2 : (fov / count) * i;
-      const z = -distance * Math.sin(angle);
-      let x = -distance * Math.cos(angle);
-      const rotY = Math.PI / 2 - angle;
-
-      if (project.title === "Product Scanner") {
-        x -= 1.5;
-      }
+      // Simple centered row (prevents large separation & off-centering).
+      const spacing = 6;
+      const mid = (count - 1) / 2;
+      const rowOffsetX = 1.2;
+      const x = (i - mid) * spacing + rowOffsetX;
+      const z = -11.5;
+      const rotY = 0;
 
       return (
         <ProjectTile
@@ -49,7 +44,7 @@ const ProjectsCarousel = () => {
     });
   }, [activeId, isActive]);
 
-  const groupRotY = PROJECTS.length === 1 ? 0 : -Math.PI / 12;
+  const groupRotY = 0;
 
   return (
     <group rotation={[0, groupRotY, 0]}>
