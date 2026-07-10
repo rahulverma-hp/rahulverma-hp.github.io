@@ -2,14 +2,14 @@ import { Project } from "../types";
 
 export const PROJECTS: Project[] = [
   {
-    title: "Product Scanner",
+    title: "Lifeve",
     date: '2025',
     subtext:
       "Scans product ingredients and uses your profile (age/height/weight) to highlight what’s good or risky in the product.",
     urls: [
       {
         text: "GitHub Repo",
-        url: "https://github.com/rahulverma-hp/Product-Scanner",
+        url: "https://github.com/rahulverma-hp/lifeve",
       },
       {
         text: "Live Website",
